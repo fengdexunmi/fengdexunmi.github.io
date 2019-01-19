@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Handler on New Handler</title>
+    <title>Handler on NewHandler&#39;s Blog</title>
     <link>http://www.newhandler.com/tags/handler/</link>
-    <description>Recent content in Handler on New Handler</description>
+    <description>Recent content in Handler on NewHandler&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <lastBuildDate>Sat, 19 Jan 2019 16:43:58 +0800</lastBuildDate>
     
 	<atom:link href="http://www.newhandler.com/tags/handler/index.xml" rel="self" type="application/rss+xml" />
