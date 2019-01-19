@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://www.newhandler.com/post/first_article/</loc>
+    <lastmod>2019-01-19T16:43:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.newhandler.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.newhandler.com/</loc>
+    <lastmod>2019-01-19T16:43:58+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.newhandler.com/post/</loc>
+    <lastmod>2019-01-19T16:43:58+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.newhandler.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
