@@ -6,10 +6,22 @@
     <description>Recent content in Posts on New Handler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 19 Jan 2019 16:43:58 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 19 Jan 2019 18:27:26 +0800</lastBuildDate>
     
 	<atom:link href="http://www.newhandler.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android Binder通信过程</title>
+      <link>http://www.newhandler.com/post/android_binder/</link>
+      <pubDate>Sat, 19 Jan 2019 18:27:26 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/post/android_binder/</guid>
+      <description>Binder原理分析 参考资料  写给 Android 应用工程师的 Binder 原理剖析 Android 多进程、Binder 你必须知道的一切  1. 概念  线程：线程是CPU最小的调度单元，是有限的系统资源，也是处理任务的地方 进程：是一个执行单元，一般指设备上的一个程序或者一个应用 一个进程可以包含多个线程  2. 开启多线程 在AndroidManifest.xml文件配置process属性 - 以&amp;rdquo;:&amp;ldquo;指定进程名 - 完整的命名方式
+android:process=&amp;quot;:todo&amp;quot; android:process=&amp;quot;com.endselect.app.todo&amp;quot;  3. 多进程问题 因为进程开启时Application都会重新创建，数据共享会变得不稳定，所以可能会出现以下问题：
+ 静态成员和单例模式失效 线程同步机制失效 SharePreference可靠性下降 Application会多次创建  4. 进程间的通信 Android中采用Binder机制进行进程间的通信。
+序列化  Serializable Serializable序列的使用很简单，只需要在Java类实现Serializable接口，设置serialVersionUID即可 把对象转换为字节序列的过程称为对象的序列化 把字节序列恢复为对象的过程称为对象的反序列化 对象的序列化主要用途：  把对象的字节序列保存到文件中 在网络上传送对象的字节序列 发送网络请求就涉及到序列化和反序列化，发送方需要把对象转换为字节序列，接收方把字节序列恢复为Java对象   /** * 序列化Person对象 * * @throws IOException */ public static final void SerializablePerson() throws IOException { Person person = new Person(&amp;quot;Frank&amp;quot;, 20); ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(new File(&amp;quot;.</description>
+    </item>
     
     <item>
       <title>Android Handler源码分析</title>
