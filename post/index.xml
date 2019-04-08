@@ -6,10 +6,19 @@
     <description>Recent content in Posts on NewHandler&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 08 Apr 2019 21:32:41 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Apr 2019 21:46:42 +0800</lastBuildDate>
     
 	<atom:link href="http://www.newhandler.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ADB命令使用</title>
+      <link>http://www.newhandler.com/post/adb-command-usage/</link>
+      <pubDate>Mon, 08 Apr 2019 21:46:42 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/post/adb-command-usage/</guid>
+      <description>前言 在Android开发中，我们经常会用到adb命令，比如： 安装apk使用adb install 查看当前连接的设备使用推送文件使用adb devices 推送文件使用ad</description>
+    </item>
     
     <item>
       <title>Median of Two Sorted Arrays</title>
