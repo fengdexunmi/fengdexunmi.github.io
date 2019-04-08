@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-01-19T18:27:26&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-19T18:27:26&#43;08:00" />
-<meta itemprop="wordCount" content="946">
+<meta itemprop="wordCount" content="953">
 
 
 
@@ -296,10 +296,10 @@ Parcelable是在内存中进行序列化，更加高效</li>
 <li>Binder框架模型
 
 <ul>
-<li>Server: 服务的正在提供者，通过Binder驱动先向ServiceManger注册服务，驱动会为这个Binder创建位于内核中的实体和ServiceManger中的引用，并将名字和引用打包传给ServiceManager，ServiceManger将其填入查找表</li>
+<li>Server: 服务的正在提供者，通过Binder驱动先向ServiceManger注册服务</li>
 <li>Client: 服务的需求者和使用者，它向ServiceManger申请需要的服务</li>
-<li>ServiceManger:</li>
-<li>Binder驱动:</li>
+<li>ServiceManger: 管理Service注册与查询（将Binder名称转化成Binder引用）</li>
+<li>Binder驱动: Binder驱动持有每个Server进程在内核空间中的Binder实体，并给Client进程提供Binder实体的引用</li>
 </ul></li>
 </ul>
 
@@ -323,7 +323,7 @@ Parcelable是在内存中进行序列化，更加高效</li>
           </div>
       <nav class="post-nav">
         
-        <a class="next" href="/post/first_article/">
+        <a class="next" href="/post/understand-handler/">
             <span class="next-text nav-default">Android Handler源码分析</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>

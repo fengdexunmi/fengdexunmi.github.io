@@ -20,5 +20,14 @@
       <description>Binder原理分析 参考资料 写给 Android 应用工程师的 Binder 原理剖析 Android 多进程、Binder 你必须知道的一切 1. 概念 线程：线程是CPU最小的调度单元，是有限</description>
     </item>
     
+    <item>
+      <title>Android Handler源码分析</title>
+      <link>http://www.newhandler.com/post/understand-handler/</link>
+      <pubDate>Sat, 19 Jan 2019 16:43:58 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/post/understand-handler/</guid>
+      <description>Handler源码分析 Handler在Android多线程场景中应用广泛。 Handler作用 Handler可以将工作线程中需要更新UI的操作</description>
+    </item>
+    
   </channel>
 </rss>

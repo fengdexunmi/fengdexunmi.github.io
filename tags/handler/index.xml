@@ -13,11 +13,11 @@
     
     <item>
       <title>Android Handler源码分析</title>
-      <link>http://www.newhandler.com/post/first_article/</link>
+      <link>http://www.newhandler.com/post/understand-handler/</link>
       <pubDate>Sat, 19 Jan 2019 16:43:58 +0800</pubDate>
       
-      <guid>http://www.newhandler.com/post/first_article/</guid>
-      <description></description>
+      <guid>http://www.newhandler.com/post/understand-handler/</guid>
+      <description>Handler源码分析 Handler在Android多线程场景中应用广泛。 Handler作用 Handler可以将工作线程中需要更新UI的操作</description>
     </item>
     
   </channel>
