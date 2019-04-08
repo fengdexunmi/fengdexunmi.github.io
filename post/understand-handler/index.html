@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-01-19T16:43:58&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-19T16:43:58&#43;08:00" />
-<meta itemprop="wordCount" content="3010">
+<meta itemprop="wordCount" content="3009">
 
 
 
@@ -419,17 +419,18 @@
 
 <h2 id="发送消息">发送消息</h2>
 
-<p>发送消息是Handler的一个作用，通过post或者send来将Message压入MessageQueue。
-- post<br />
-  post(Runnable r);<br />
-  postAtTime(Runnable r, long uptimeMillis);</p>
+<p>发送消息是Handler的一个作用，通过post或者send来将Message压入MessageQueue。</p>
 
 <ul>
-<li>Send<br />
+<li><p>post<br />
+post(Runnable r);<br />
+postAtTime(Runnable r, long uptimeMillis);</p></li>
+
+<li><p>Send<br />
 sendEmptyMessage(int what);
 sendMessageAtFrontOfQueue(Message msg);
 snedMessageAtTime(Message msg, long uptimeMillis);
-sendMessageDelayed(Message msg, long delayMills);</li>
+sendMessageDelayed(Message msg, long delayMills);</p></li>
 </ul>
 
 <p>其实，post方法最终也是调用了send方法，将post中的Runnable转换成Message的callback。</p>
