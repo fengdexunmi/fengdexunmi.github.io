@@ -6,10 +6,19 @@
     <description>Recent content on NewHandler&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 14 Apr 2019 23:31:46 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Apr 2019 23:34:44 +0800</lastBuildDate>
     
 	<atom:link href="http://www.newhandler.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Activity启动模式</title>
+      <link>http://www.newhandler.com/post/understanding-activity-launchmode/</link>
+      <pubDate>Sun, 14 Apr 2019 23:34:44 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/post/understanding-activity-launchmode/</guid>
+      <description>参考任玉刚的《Android开发艺术探索》 在默认情况下，当我们启动Activity的时候，系统会创建实例并把它放入任务栈。当我们按下back</description>
+    </item>
     
     <item>
       <title>Terminal常用配置以及使用</title>
