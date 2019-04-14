@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Terminal常用配置以及使用 - NewHandler&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="NewHandler" /><meta name="description" content="Terminal是我们开发过程常用的一个工具。高效利用Terminal能够提高工作效率。 下面是我在开发过程中的一些小技巧，可能很多你已经在使" /><meta name="keywords" content="Android, Java, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://www.newhandler.com/post/common-config-in-terminal/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Terminal常用配置以及使用" />
+<meta property="og:description" content="Terminal是我们开发过程常用的一个工具。高效利用Terminal能够提高工作效率。 下面是我在开发过程中的一些小技巧，可能很多你已经在使" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.newhandler.com/post/common-config-in-terminal/" /><meta property="article:published_time" content="2019-04-14T23:31:46&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-14T23:31:46&#43;08:00"/>
+
+<meta itemprop="name" content="Terminal常用配置以及使用">
+<meta itemprop="description" content="Terminal是我们开发过程常用的一个工具。高效利用Terminal能够提高工作效率。 下面是我在开发过程中的一些小技巧，可能很多你已经在使">
+
+
+<meta itemprop="datePublished" content="2019-04-14T23:31:46&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-14T23:31:46&#43;08:00" />
+<meta itemprop="wordCount" content="598">
+
+
+
+<meta itemprop="keywords" content="zsh,git," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Terminal常用配置以及使用"/>
+<meta name="twitter:description" content="Terminal是我们开发过程常用的一个工具。高效利用Terminal能够提高工作效率。 下面是我在开发过程中的一些小技巧，可能很多你已经在使"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">NewHandler</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">NewHandler</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Terminal常用配置以及使用</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-14 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#zsh">zsh</a>
+<ul>
+<li><a href="#cdf">cdf</a></li>
+<li><a href="#目录跳转">目录跳转</a></li>
+<li><a href="#alias">alias</a></li>
+</ul></li>
+<li><a href="#git">git</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p>Terminal是我们开发过程常用的一个工具。高效利用Terminal能够提高工作效率。
+下面是我在开发过程中的一些小技巧，可能很多你已经在使用了。</p>
+
+<p>下面的介绍都是在Mac环境下进行的。</p>
+
+<h2 id="zsh">zsh</h2>
+
+<p>我推荐大家配置zsh为默认的shell环境。我安装的是<a href="https://github.com/robbyrussell/oh-my-zsh">Oh My Zsh</a>。</p>
+
+<blockquote>
+<p>Oh My Zsh is an open source, community-driven framework for managing your zsh configuration. It comes with a bunch of features out of the box and improves your terminal experience.</p>
+</blockquote>
+
+<h3 id="cdf">cdf</h3>
+
+<p>当我们打开Finder（或者再继续点击目录），这个时候在Terminal中输入<code>cdf</code>命令并回车。</p>
+
+<p>我们可以看到已经跳到了我们打开的这个目录，是不是很方便。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">➜  ~ pwd
+/Users/frank
+➜  ~ cdf
+➜  themes 
+➜  themes pwd
+/Users/frank/BlogProject/github/themes</pre></td></tr></table>
+</div>
+</div>
+<h3 id="目录跳转">目录跳转</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">➜  github pwd
+/Users/frank/BlogProject/github</pre></td></tr></table>
+</div>
+</div>
+<p>比如github文件夹目录所在目录为~/BlogProject/github，我们想跳转到github可以在~(即/Users/frank)目录下，先输入cd B/g，然后按下tab键自动补全，即会变成完整的 cd BlogProject/github/，当然如果有多个B和g开头的文件夹，就会让我们选择哪一个文件夹，也挺方便的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">➜  ~ 
+➜  ~ cd B/g </pre></td></tr></table>
+</div>
+</div>
+<h3 id="alias">alias</h3>
+
+<p>在zsh的配置文件（~/.zshrc）中配置alias别名，对于常用的命令，可以使用alias简化命令。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">alias gst=&#39;git status&#39;
+alias gcm=&#39;git commit -m &#39;
+alias gps=&#39;git push&#39;</pre></td></tr></table>
+</div>
+</div>
+<p>根据自己需要扩展更多的别名。</p>
+
+<h2 id="git">git</h2>
+
+<p>git全局配置代理</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">git config --global https.proxy http://127.0.0.1:1080
+
+git config --global https.proxy https://127.0.0.1:1080
+
+git config --global --unset http.proxy
+
+git config --global --unset https.proxy</pre></td></tr></table>
+</div>
+</div>
+<p>只想在这一次git clone代码的时候使用代理</p>
+
+<p>git clone <code>origin url</code> &ndash;config &lsquo;http.proxy=127.0.0.1:1080&rsquo;</p>
+
+<p>（<small>ip地址和端口号根据自己的实际去配置</small>）</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">NewHandler</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-04-14</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/zsh/">zsh</a>
+          <a href="/tags/git/">git</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/the-journey-of-launching-activity/">
+            <span class="next-text nav-default">The Journey of Launching Activity</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fengdexunmi" class="iconfont icon-github" title="github"></a>
+  <a href="http://www.newhandler.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">NewHandler</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

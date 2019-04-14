@@ -6,10 +6,19 @@
     <description>Recent content on NewHandler&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 14 Apr 2019 23:26:47 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Apr 2019 23:31:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.newhandler.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Terminal常用配置以及使用</title>
+      <link>http://www.newhandler.com/post/common-config-in-terminal/</link>
+      <pubDate>Sun, 14 Apr 2019 23:31:46 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/post/common-config-in-terminal/</guid>
+      <description>Terminal是我们开发过程常用的一个工具。高效利用Terminal能够提高工作效率。 下面是我在开发过程中的一些小技巧，可能很多你已经在使</description>
+    </item>
     
     <item>
       <title>The Journey of Launching Activity</title>

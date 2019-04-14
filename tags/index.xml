@@ -74,5 +74,23 @@
       <description></description>
     </item>
     
+    <item>
+      <title>git</title>
+      <link>http://www.newhandler.com/tags/git/</link>
+      <pubDate>Sun, 14 Apr 2019 23:31:46 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zsh</title>
+      <link>http://www.newhandler.com/tags/zsh/</link>
+      <pubDate>Sun, 14 Apr 2019 23:31:46 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/tags/zsh/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
