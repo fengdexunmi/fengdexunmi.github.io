@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Longest Palindromic Substring - NewHandler&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="NewHandler" /><meta name="description" content="题目 LeetCode-5 Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1: 1 2 3 Input: &amp;#34;babad&amp;#34; Output: &amp;#34;bab&amp;#34; Note: &amp;#34;aba&amp;#34; is also a valid answer. Example 2: 1 2 Input: &amp;#34;cbbd&amp;#34; Output: &amp;#34;bb&amp;#34; 给一个字符串s，假设s的最大长度为1000" /><meta name="keywords" content="Android, Java, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://www.newhandler.com/post/longest-palindromic-substring/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Longest Palindromic Substring" />
+<meta property="og:description" content="题目 LeetCode-5 Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1: 1 2 3 Input: &#34;babad&#34; Output: &#34;bab&#34; Note: &#34;aba&#34; is also a valid answer. Example 2: 1 2 Input: &#34;cbbd&#34; Output: &#34;bb&#34; 给一个字符串s，假设s的最大长度为1000" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.newhandler.com/post/longest-palindromic-substring/" /><meta property="article:published_time" content="2019-04-14T23:21:00&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-14T23:21:00&#43;08:00"/>
+
+<meta itemprop="name" content="Longest Palindromic Substring">
+<meta itemprop="description" content="题目 LeetCode-5 Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1: 1 2 3 Input: &#34;babad&#34; Output: &#34;bab&#34; Note: &#34;aba&#34; is also a valid answer. Example 2: 1 2 Input: &#34;cbbd&#34; Output: &#34;bb&#34; 给一个字符串s，假设s的最大长度为1000">
+
+
+<meta itemprop="datePublished" content="2019-04-14T23:21:00&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-14T23:21:00&#43;08:00" />
+<meta itemprop="wordCount" content="1676">
+
+
+
+<meta itemprop="keywords" content="LeetCode,Algorithm," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Longest Palindromic Substring"/>
+<meta name="twitter:description" content="题目 LeetCode-5 Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1: 1 2 3 Input: &#34;babad&#34; Output: &#34;bab&#34; Note: &#34;aba&#34; is also a valid answer. Example 2: 1 2 Input: &#34;cbbd&#34; Output: &#34;bb&#34; 给一个字符串s，假设s的最大长度为1000"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">NewHandler</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">NewHandler</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Longest Palindromic Substring</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-14 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#题目">题目</a></li>
+<li><a href="#误区">误区</a></li>
+<li><a href="#暴力求解">暴力求解</a></li>
+<li><a href="#动态规划">动态规划</a></li>
+<li><a href="#manacher算法-马拉车算法">Manacher算法(马拉车算法)</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h2 id="题目">题目</h2>
+
+<p><strong>LeetCode-5</strong></p>
+
+<p>Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.</p>
+
+<p>Example 1:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Input: &#34;babad&#34;
+Output: &#34;bab&#34;
+Note: &#34;aba&#34; is also a valid answer.</pre></td></tr></table>
+</div>
+</div>
+<p>Example 2:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Input: &#34;cbbd&#34;
+Output: &#34;bb&#34;</pre></td></tr></table>
+</div>
+</div>
+<p>给一个字符串s，假设s的最大长度为1000，求出s的最长回文子串。</p>
+
+<h2 id="误区">误区</h2>
+
+<p>回文串&ndash;从左向右遍历和从右向左遍历得到的结果是一致的。根据这一特性，我们再求解字符串s的最长回文子串，可能会陷入一个<strong>误区</strong>:将字符串s翻转得字符串ss，根据回文串的特性，s和ss有<strong>最长的公共子串</strong>，那这个最长的公共子串是否是最长的回文子串呢？大家先思考一样。</p>
+
+<p>答案是否定的，给出反例。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">s = &#34;abgkba&#34; =&gt; ss= &#34;abkgba&#34;
+s和ss最长公共子串是&#34;ab&#34;或者&#34;ba&#34;，而最长的回文子串是单个字符串。</pre></td></tr></table>
+</div>
+</div>
+<h2 id="暴力求解">暴力求解</h2>
+
+<p>暴力求解，得到s<strong>所有的</strong>子串，遍历每一个子串，判断子串是否是回文字符串。很暴力，复杂度达到了O(n<sup>3</sup>)。</p>
+
+<h2 id="动态规划">动态规划</h2>
+
+<p>假设字符串s的子串的起始坐标为j，终点坐标为i，用boolean lps[j][i]来标记从j到i的子串是否为回文串。根据回文串的特性，如果从j到i的子串是回文串，则从j+1到i-1的子串也是回文串。从长度为1的子串开始遍历，长度为1的子串一定是回文串，长度为2的子串，如果满足s.charAt(j)==s.charAt(i)，则该长度为2的子串也是回文串。可以推导出<strong>lps[j][i] = lps[j+1][i-1] &amp;&amp; s.charAt(j) == s.charAt(i)</strong>。</p>
+
+<p>空间复杂度为O(n<sup>2</sup>)，时间复杂度为O(n<sup>2</sup>)。</p>
+
+<p>代码如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="cm">/**
+</span><span class="cm"> * Longest Palindromic Substring
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LongestPalindromicSubstring</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">longestPalindrome</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">s</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="n">0</span><span class="o">)</span>
+            <span class="k">return</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
+        
+        <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
+        <span class="kt">boolean</span><span class="o">[][]</span> <span class="n">lps</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">len</span><span class="o">][</span><span class="n">len</span><span class="o">];</span>
+        <span class="c1">// 记录最长回文子串的长度
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">maxPalindromeLen</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="c1">// 记录最长回文子串的起始坐标
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">startPalindrome</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">2</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">lps</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">j</span><span class="o">)</span> <span class="o">==</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">lps</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">lps</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="n">1</span><span class="o">][</span><span class="n">i</span><span class="o">-</span><span class="n">1</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">j</span><span class="o">)</span> <span class="o">==</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                <span class="o">}</span>
+
+                <span class="k">if</span> <span class="o">(</span><span class="n">lps</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="o">+</span> <span class="n">1</span> <span class="o">&gt;</span> <span class="n">maxPalindromeLen</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">maxPalindromeLen</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+                    <span class="n">startPalindrome</span> <span class="o">=</span> <span class="n">j</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">startPalindrome</span><span class="o">,</span> <span class="n">startPalindrome</span> <span class="o">+</span> <span class="n">maxPalindromeLen</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="manacher算法-马拉车算法">Manacher算法(马拉车算法)</h2>
+
+<p>Manacher算法相对于上面的动态规划算法，利用回文串对称特性优化了遍历的过程，将算法复杂度降低到O(n)。
+为了避免奇偶处理，我们首先在字符串s首尾和字符间插入一个字符&rsquo;#&lsquo;（前提是这个字符未出现在串里），这样得到的新字符串的长度始终都是奇数。另外为了避免边界判断，我们再新字符首尾加不同的字符&rsquo;$&lsquo;和&rsquo;^&lsquo;得到新字符newS。对于新字符串，我们定义数组p，其中p[i]表示已newS[i]字符为中心的回文子串的半径。
+<space>|<space>
+&mdash;|&mdash;
+s|abcdedcba
+newS|$#a#b#c#d#e#d#c#b#a#^
+p|[1,1,2,1,2,1,2,1,2,1,10,1,2,1,2,1,2,1,2,1,1]</p>
+
+<p>我们可以证明p[i]-1就是以newS[i]为中心在原字符串s中的回文串的长度。</p>
+
+<p>这样，确定了数组p，找到最大值和索引就可以求出最长回文子串。我们定义两个辅助变量id和mx，其中id为已知最长回文子串的中心位置，那么mx=id+p[id]，即是这个回文子串的右边界。</p>
+
+<p>用变量i遍历字符串，假设j为i关于id的对称点，则j=2*id-i。</p>
+
+<p><img src="img/pls_1.png" alt="pls_1" />
+<small>(来自于<a href="https://my.oschina.net/hunglish/blog/747642">网络图片</a>)</small></p>
+
+<p>如上图所示，当mx-i&gt;p[j]时，以newS[j]为中心的回文子串在以newS[id]为中心的回文子串中，由于i和j对称，以newS[i]为中心的回文子串必然包含在以newS[id]为中心的回文子串中，所以p[i]=p[j]。</p>
+
+<p><img src="img/pls_2.png" alt="pls_2" />
+<small>(来自于<a href="https://my.oschina.net/hunglish/blog/747642">网络图片</a>)</small></p>
+
+<p>如上图所示，当mx-i&lt;=p[j]时，以newS[j]为中心的回文子串不完全在newS[id]为中心的回文串内，但图中所包含的绿色部分相同，也就是说p[i]&gt;=mx-i。</p>
+
+<p>数组p的初始值可以都赋值为1，因为单个字符的回文半径为1。</p>
+
+<p>代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="cm">/**
+</span><span class="cm"> * Manacher算法
+</span><span class="cm"> * 
+</span><span class="cm"> * @param s
+</span><span class="cm"> * @return
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">longestPalindrome2</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">s</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="n">0</span><span class="o">)</span>
+        <span class="k">return</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
+    
+    <span class="n">StringBuilder</span> <span class="n">sBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+    <span class="n">sBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;$#&#34;</span><span class="o">);</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">sBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">)).</span><span class="na">append</span><span class="o">(</span><span class="sc">&#39;#&#39;</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">sBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;^&#34;</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">newS</span> <span class="o">=</span> <span class="n">sBuilder</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">newS</span><span class="o">.</span><span class="na">length</span><span class="o">()];</span>
+    <span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">mx</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+    <span class="c1">// 原串的长度
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">originLen</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+    <span class="c1">// 原串的中心位置
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">originCenter</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">newS</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">mx</span> <span class="o">-</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">0</span> <span class="o">?</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">p</span><span class="o">[</span><span class="n">2</span> <span class="o">*</span> <span class="n">id</span> <span class="o">-</span> <span class="n">i</span><span class="o">],</span> <span class="n">mx</span> <span class="o">-</span> <span class="n">i</span><span class="o">)</span> <span class="o">:</span> <span class="n">1</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">newS</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">==</span> <span class="n">newS</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">]))</span> <span class="o">{</span>
+            <span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">]++;</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">mx</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="o">+</span> <span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">mx</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="n">id</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">originLen</span> <span class="o">&lt;</span> <span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">originLen</span> <span class="o">=</span> <span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="n">originCenter</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="na">substring</span><span class="o">((</span><span class="n">originCenter</span> <span class="o">-</span> <span class="n">originLen</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">,</span> <span class="o">(</span><span class="n">originCenter</span> <span class="o">-</span> <span class="n">originLen</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span> <span class="o">+</span> <span class="n">originLen</span> <span class="o">-</span> <span class="n">1</span><span class="o">);</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">NewHandler</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-04-14</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/leetcode/">LeetCode</a>
+          <a href="/tags/algorithm/">Algorithm</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/adb-command-usage/">
+            <span class="next-text nav-default">ADB命令使用</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fengdexunmi" class="iconfont icon-github" title="github"></a>
+  <a href="http://www.newhandler.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">NewHandler</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

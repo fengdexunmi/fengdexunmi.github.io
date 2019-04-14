@@ -6,10 +6,19 @@
     <description>Recent content in LeetCode on NewHandler&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 08 Apr 2019 21:32:41 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Apr 2019 23:21:00 +0800</lastBuildDate>
     
 	<atom:link href="http://www.newhandler.com/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Longest Palindromic Substring</title>
+      <link>http://www.newhandler.com/post/longest-palindromic-substring/</link>
+      <pubDate>Sun, 14 Apr 2019 23:21:00 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/post/longest-palindromic-substring/</guid>
+      <description>题目 LeetCode-5 Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1: 1 2 3 Input: &amp;#34;babad&amp;#34; Output: &amp;#34;bab&amp;#34; Note: &amp;#34;aba&amp;#34; is also a valid answer. Example 2: 1 2 Input: &amp;#34;cbbd&amp;#34; Output: &amp;#34;bb&amp;#34; 给一个字符串s，假设s的最大长度为1000</description>
+    </item>
     
     <item>
       <title>Median of Two Sorted Arrays</title>
