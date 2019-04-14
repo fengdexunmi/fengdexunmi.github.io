@@ -293,12 +293,12 @@ p|[1,1,2,1,2,1,2,1,2,1,10,1,2,1,2,1,2,1,2,1,1]</p>
 
 <p>用变量i遍历字符串，假设j为i关于id的对称点，则j=2*id-i。</p>
 
-<p><img src="img/pls_1.png" alt="pls_1" />
+<p><img src="https://github.com/fengdexunmi/Read_Leetcode_Articles/raw/master/2019/week_02/img/pls_1.png" alt="pls_1" />
 <small>(来自于<a href="https://my.oschina.net/hunglish/blog/747642">网络图片</a>)</small></p>
 
 <p>如上图所示，当mx-i&gt;p[j]时，以newS[j]为中心的回文子串在以newS[id]为中心的回文子串中，由于i和j对称，以newS[i]为中心的回文子串必然包含在以newS[id]为中心的回文子串中，所以p[i]=p[j]。</p>
 
-<p><img src="img/pls_2.png" alt="pls_2" />
+<p><img src="https://raw.githubusercontent.com/fengdexunmi/Read_Leetcode_Articles/master/2019/week_02/img/pls_2.png" alt="pls_2" />
 <small>(来自于<a href="https://my.oschina.net/hunglish/blog/747642">网络图片</a>)</small></p>
 
 <p>如上图所示，当mx-i&lt;=p[j]时，以newS[j]为中心的回文子串不完全在newS[id]为中心的回文串内，但图中所包含的绿色部分相同，也就是说p[i]&gt;=mx-i。</p>
