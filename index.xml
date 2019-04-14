@@ -6,10 +6,19 @@
     <description>Recent content on NewHandler&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 14 Apr 2019 23:21:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Apr 2019 23:26:47 +0800</lastBuildDate>
     
 	<atom:link href="http://www.newhandler.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Journey of Launching Activity</title>
+      <link>http://www.newhandler.com/post/the-journey-of-launching-activity/</link>
+      <pubDate>Sun, 14 Apr 2019 23:26:47 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/post/the-journey-of-launching-activity/</guid>
+      <description>原文链接 https://medium.com/@Myyousseff/the-journey-of-launching-an-android-activity-9b64e11dc157 Android开发中，启动Activity是最常见的操作，启动一个Activity过程到底发生了什么呢？让我们一探究竟。 Zygote 新建一个</description>
+    </item>
     
     <item>
       <title>Longest Palindromic Substring</title>

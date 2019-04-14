@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>The Journey of Launching Activity - NewHandler&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="NewHandler" /><meta name="description" content="原文链接 https://medium.com/@Myyousseff/the-journey-of-launching-an-android-activity-9b64e11dc157 Android开发中，启动Activity是最常见的操作，启动一个Activity过程到底发生了什么呢？让我们一探究竟。 Zygote 新建一个" /><meta name="keywords" content="Android, Java, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://www.newhandler.com/post/the-journey-of-launching-activity/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="The Journey of Launching Activity" />
+<meta property="og:description" content="原文链接 https://medium.com/@Myyousseff/the-journey-of-launching-an-android-activity-9b64e11dc157 Android开发中，启动Activity是最常见的操作，启动一个Activity过程到底发生了什么呢？让我们一探究竟。 Zygote 新建一个" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.newhandler.com/post/the-journey-of-launching-activity/" /><meta property="article:published_time" content="2019-04-14T23:26:47&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-14T23:26:47&#43;08:00"/>
+
+<meta itemprop="name" content="The Journey of Launching Activity">
+<meta itemprop="description" content="原文链接 https://medium.com/@Myyousseff/the-journey-of-launching-an-android-activity-9b64e11dc157 Android开发中，启动Activity是最常见的操作，启动一个Activity过程到底发生了什么呢？让我们一探究竟。 Zygote 新建一个">
+
+
+<meta itemprop="datePublished" content="2019-04-14T23:26:47&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-14T23:26:47&#43;08:00" />
+<meta itemprop="wordCount" content="1244">
+
+
+
+<meta itemprop="keywords" content="Android,Activity," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The Journey of Launching Activity"/>
+<meta name="twitter:description" content="原文链接 https://medium.com/@Myyousseff/the-journey-of-launching-an-android-activity-9b64e11dc157 Android开发中，启动Activity是最常见的操作，启动一个Activity过程到底发生了什么呢？让我们一探究竟。 Zygote 新建一个"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">NewHandler</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">NewHandler</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">The Journey of Launching Activity</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-14 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#zygote">Zygote</a></li>
+<li><a href="#activitymanagerservice">ActivityManagerService</a>
+<ul>
+<li><a href="#1-collect-target-activity-information">1- Collect Target Activity Information</a></li>
+<li><a href="#2-check-user-privileges">2- Check User Privileges</a></li>
+<li><a href="#3-activity-object-instantiation">3- Activity object Instantiation</a>
+<ul>
+<li><a href="#3-1-get-the-environment-ready">3.1  Get The Environment Ready</a></li>
+<li><a href="#3-2-retrieve-the-previously-collected-information">3.2- Retrieve The Previously Collected Information</a></li>
+<li><a href="#3-3-the-instantiation">3.3- The Instantiation</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p>原文链接 <a href="https://medium.com/@Myyousseff/the-journey-of-launching-an-android-activity-9b64e11dc157">https://medium.com/@Myyousseff/the-journey-of-launching-an-android-activity-9b64e11dc157</a></p>
+
+<p>Android开发中，启动Activity是最常见的操作，启动一个Activity过程到底发生了什么呢？让我们一探究竟。</p>
+
+<h2 id="zygote">Zygote</h2>
+
+<p>新建一个MainActivity，重写onCreate()方法，在onCreate()中打上断点，启动MainActivity，运行到断点处。得到如下截图：</p>
+
+<p><img src="https://github.com/fengdexunmi/arts-week/raw/master/2019/review/img/launching-activity-2.png" alt="launching-activity-2" /></p>
+
+<p>在Debugger Frames最下面可以看到调用了ZygoteInit。</p>
+
+<p>Zygote进程是Android的核心进程，由init进程（Linux所有的进程都是init进程的子孙进程）启动。Zygote进程启动时会初始化并运行虚拟机，会预加载所需要的类和资源，然后启动一个SystemServer进程，SystemServer进程负责初始化核心services，其中一个我们比较感兴趣的进程是ActivityManagerService。</p>
+
+<h2 id="activitymanagerservice">ActivityManagerService</h2>
+
+<p>ActivityManagerService负责创建Activity进程，管理Activity生命周期和Activity栈。它的启动过程可以分为三个主要步骤：</p>
+
+<h3 id="1-collect-target-activity-information">1- Collect Target Activity Information</h3>
+
+<p>收集目标Activity信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="kd">private</span> <span class="n">ActivityInfo</span> <span class="nf">resolveActivityInfo</span><span class="o">(</span><span class="n">Intent</span> <span class="n">intent</span><span class="o">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">,</span> <span class="kt">int</span> <span class="n">userId</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">ActivityInfo</span> <span class="n">ai</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="n">ComponentName</span> <span class="n">comp</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="na">getComponent</span><span class="o">();</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">comp</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Factory test.
+</span><span class="c1"></span>            <span class="n">ai</span> <span class="o">=</span> <span class="n">AppGlobals</span><span class="o">.</span><span class="na">getPackageManager</span><span class="o">().</span><span class="na">getActivityInfo</span><span class="o">(</span><span class="n">comp</span><span class="o">,</span> <span class="n">flags</span><span class="o">,</span> <span class="n">userId</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">ResolveInfo</span> <span class="n">info</span> <span class="o">=</span> <span class="n">AppGlobals</span><span class="o">.</span><span class="na">getPackageManager</span><span class="o">().</span><span class="na">resolveIntent</span><span class="o">(</span>
+                    <span class="n">intent</span><span class="o">,</span>
+                    <span class="n">intent</span><span class="o">.</span><span class="na">resolveTypeIfNeeded</span><span class="o">(</span><span class="n">mContext</span><span class="o">.</span><span class="na">getContentResolver</span><span class="o">()),</span>
+                    <span class="n">flags</span><span class="o">,</span> <span class="n">userId</span><span class="o">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><small><a href="https://android.googlesource.com/platform/frameworks/base/+/4f868ed/services/core/java/com/android/server/am/ActivityManagerService.java#3334">完整实现</a></small></p>
+
+<p>通过调用<code>resolveIntent()</code>收集目标Activity信息，完成之后将Activity信息保存起来避免重做这个步骤。</p>
+
+<h3 id="2-check-user-privileges">2- Check User Privileges</h3>
+
+<p>检查用户权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="k">try</span> <span class="o">{</span>
+    <span class="n">targetUid</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="na">getPackageUid</span><span class="o">(</span><span class="n">targetPkg</span><span class="o">,</span> <span class="n">MATCH_DEBUG_TRIAGED_MISSING</span><span class="o">,</span> <span class="n">targetUserId</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">RemoteException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="n">targetUid</span> <span class="o">=</span> <span class="n">checkGrantUriPermissionLocked</span><span class="o">(</span><span class="n">callingUid</span><span class="o">,</span> <span class="n">targetPkg</span><span class="o">,</span> <span class="n">grantUri</span><span class="o">,</span> <span class="n">modeFlags</span><span class="o">,</span> <span class="n">targetUid</span><span class="o">);</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">targetUid</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="n">grantUriPermissionUncheckedLocked</span><span class="o">(</span><span class="n">targetUid</span><span class="o">,</span> <span class="n">targetPkg</span><span class="o">,</span> <span class="n">grantUri</span><span class="o">,</span> <span class="n">modeFlags</span><span class="o">,</span> <span class="n">owner</span><span class="o">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>这一步检查用户是否有权限启动目标Activity。如下：</p>
+
+<ul>
+<li>确定目标package有一个合法的UID</li>
+<li>通过调用<code>checkGrantUriPermissionLocked()</code>方法检查是否有权限</li>
+<li>最后调用<code>grantUriPermissionUncheckedLocked()</code>方法</li>
+</ul>
+
+<h3 id="3-activity-object-instantiation">3- Activity object Instantiation</h3>
+
+<p>初始化Activity对象，通过ActivityThread类来完成。</p>
+
+<h4 id="3-1-get-the-environment-ready">3.1  Get The Environment Ready</h4>
+
+<p>准备环境</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="c1">// Make sure we are running with the most recent config.
+</span><span class="c1"></span><span class="n">handleConfigurationChanged</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">localLOGV</span><span class="o">)</span> <span class="n">Slog</span><span class="o">.</span><span class="na">v</span><span class="o">(</span>
+    <span class="n">TAG</span><span class="o">,</span> <span class="s">&#34;Handling launch of &#34;</span> <span class="o">+</span> <span class="n">r</span><span class="o">);</span>
+
+<span class="c1">// Initialize before creating the activity
+</span><span class="c1"></span><span class="k">if</span> <span class="o">(!</span><span class="n">ThreadedRenderer</span><span class="o">.</span><span class="na">sRendererDisabled</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">GraphicsEnvironment</span><span class="o">.</span><span class="na">earlyInitEGL</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="n">WindowManagerGlobal</span><span class="o">.</span><span class="na">initialize</span><span class="o">();</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>在<code>handleLaunchActivity()</code>方法中，初始化配置、图形环境和windowManager。</p>
+
+<h4 id="3-2-retrieve-the-previously-collected-information">3.2- Retrieve The Previously Collected Information</h4>
+
+<p>获取之前收集的Activity信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="n">ComponentName</span> <span class="n">component</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">intent</span><span class="o">.</span><span class="na">getComponent</span><span class="o">();</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">component</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">component</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">intent</span><span class="o">.</span><span class="na">resolveActivity</span><span class="o">(</span>
+       <span class="n">mInitialApplication</span><span class="o">.</span><span class="na">getPackageManager</span><span class="o">());</span>
+    <span class="n">r</span><span class="o">.</span><span class="na">intent</span><span class="o">.</span><span class="na">setComponent</span><span class="o">(</span><span class="n">component</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">r</span><span class="o">.</span><span class="na">activityInfo</span><span class="o">.</span><span class="na">targetActivity</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">component</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ComponentName</span><span class="o">(</span><span class="n">r</span><span class="o">.</span><span class="na">activityInfo</span><span class="o">.</span><span class="na">packageName</span><span class="o">,</span>
+            <span class="n">r</span><span class="o">.</span><span class="na">activityInfo</span><span class="o">.</span><span class="na">targetActivity</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="n">ContextImpl</span> <span class="n">appContext</span> <span class="o">=</span> <span class="n">createBaseContextForActivity</span><span class="o">(</span><span class="n">r</span><span class="o">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>获取已经收集的Activity信息并创建baseContext。</p>
+
+<h4 id="3-3-the-instantiation">3.3- The Instantiation</h4>
+
+<p>实例化Activity</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="nd">@NonNull</span> <span class="n">Activity</span> <span class="nf">instantiateActivity</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="n">ClassLoader</span> <span class="n">cl</span><span class="o">,</span> <span class="nd">@NonNull</span> <span class="n">String</span> <span class="n">className</span><span class="o">,</span>
+        <span class="nd">@Nullable</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span>
+        <span class="kd">throws</span> <span class="n">InstantiationException</span><span class="o">,</span> <span class="n">IllegalAccessException</span><span class="o">,</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="o">(</span><span class="n">Activity</span><span class="o">)</span> <span class="n">cl</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="n">className</span><span class="o">).</span><span class="na">newInstance</span><span class="o">();</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>最后，通过Java反射实例化Activity。</p>
+
+<p>实例化完成后，ActivityThread调用<code>callActivityOnCreate()</code>方法，开启Activity生命周期。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>这个过程讲的比较简陋，我们大概知道了几个概念，Zygote、ActivityManagerService、ActivityThread。后面我们再分享一篇文章详细分析Activity的启动过程。敬请期待！！</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">NewHandler</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-04-14</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/android/">Android</a>
+          <a href="/tags/activity/">Activity</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/longest-palindromic-substring/">
+            <span class="next-text nav-default">Longest Palindromic Substring</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fengdexunmi" class="iconfont icon-github" title="github"></a>
+  <a href="http://www.newhandler.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">NewHandler</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
