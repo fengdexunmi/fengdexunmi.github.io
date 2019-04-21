@@ -32,7 +32,7 @@
     <item>
       <title>Android</title>
       <link>http://www.newhandler.com/tags/android/</link>
-      <pubDate>Sun, 14 Apr 2019 23:34:44 +0800</pubDate>
+      <pubDate>Sun, 21 Apr 2019 23:39:34 +0800</pubDate>
       
       <guid>http://www.newhandler.com/tags/android/</guid>
       <description></description>
@@ -44,6 +44,15 @@
       <pubDate>Sat, 19 Jan 2019 18:27:26 +0800</pubDate>
       
       <guid>http://www.newhandler.com/tags/binder/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Elevation</title>
+      <link>http://www.newhandler.com/tags/elevation/</link>
+      <pubDate>Sun, 21 Apr 2019 23:39:34 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/tags/elevation/</guid>
       <description></description>
     </item>
     
@@ -62,6 +71,15 @@
       <pubDate>Sun, 21 Apr 2019 23:34:05 +0800</pubDate>
       
       <guid>http://www.newhandler.com/tags/leetcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StateListAnimator</title>
+      <link>http://www.newhandler.com/tags/statelistanimator/</link>
+      <pubDate>Sun, 21 Apr 2019 23:39:34 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/tags/statelistanimator/</guid>
       <description></description>
     </item>
     

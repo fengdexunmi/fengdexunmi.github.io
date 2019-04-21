@@ -6,10 +6,19 @@
     <description>Recent content in Android on NewHandler&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 14 Apr 2019 23:34:44 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 21 Apr 2019 23:39:34 +0800</lastBuildDate>
     
 	<atom:link href="http://www.newhandler.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>StateListAnimator — a Powerful Little Tool for Elevation Animation</title>
+      <link>http://www.newhandler.com/post/little_tool_for_elevation_animation/</link>
+      <pubDate>Sun, 21 Apr 2019 23:39:34 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/post/little_tool_for_elevation_animation/</guid>
+      <description>原文链接：https://proandroiddev.com/statelistanimator-a-powerful-little-too</description>
+    </item>
     
     <item>
       <title>Activity启动模式</title>

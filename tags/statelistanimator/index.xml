@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>StateListAnimator on NewHandler&#39;s Blog</title>
+    <link>http://www.newhandler.com/tags/statelistanimator/</link>
+    <description>Recent content in StateListAnimator on NewHandler&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 21 Apr 2019 23:39:34 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.newhandler.com/tags/statelistanimator/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>StateListAnimator — a Powerful Little Tool for Elevation Animation</title>
+      <link>http://www.newhandler.com/post/little_tool_for_elevation_animation/</link>
+      <pubDate>Sun, 21 Apr 2019 23:39:34 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/post/little_tool_for_elevation_animation/</guid>
+      <description>原文链接：https://proandroiddev.com/statelistanimator-a-powerful-little-too</description>
+    </item>
+    
+  </channel>
+</rss>
