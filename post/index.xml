@@ -6,10 +6,19 @@
     <description>Recent content in Posts on NewHandler&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 21 Apr 2019 23:43:28 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 21 Apr 2019 23:52:11 +0800</lastBuildDate>
     
 	<atom:link href="http://www.newhandler.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android系统演进</title>
+      <link>http://www.newhandler.com/post/android-system-evolution/</link>
+      <pubDate>Sun, 21 Apr 2019 23:52:11 +0800</pubDate>
+      
+      <guid>http://www.newhandler.com/post/android-system-evolution/</guid>
+      <description>这周六（2019-4-20）我去参加了安卓巴士举办的开发者大会，会议上Gityuan分享了Android技术架构演进与未来。 文末我会附上这次</description>
+    </item>
     
     <item>
       <title>Android内存分析命令</title>

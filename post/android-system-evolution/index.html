@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Android系统演进 - NewHandler&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="NewHandler" /><meta name="description" content="这周六（2019-4-20）我去参加了安卓巴士举办的开发者大会，会议上Gityuan分享了Android技术架构演进与未来。 文末我会附上这次" /><meta name="keywords" content="Android, Java, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://www.newhandler.com/post/android-system-evolution/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Android系统演进" />
+<meta property="og:description" content="这周六（2019-4-20）我去参加了安卓巴士举办的开发者大会，会议上Gityuan分享了Android技术架构演进与未来。 文末我会附上这次" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.newhandler.com/post/android-system-evolution/" /><meta property="article:published_time" content="2019-04-21T23:52:11&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-21T23:52:11&#43;08:00"/>
+
+<meta itemprop="name" content="Android系统演进">
+<meta itemprop="description" content="这周六（2019-4-20）我去参加了安卓巴士举办的开发者大会，会议上Gityuan分享了Android技术架构演进与未来。 文末我会附上这次">
+
+
+<meta itemprop="datePublished" content="2019-04-21T23:52:11&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-21T23:52:11&#43;08:00" />
+<meta itemprop="wordCount" content="1544">
+
+
+
+<meta itemprop="keywords" content="Android," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Android系统演进"/>
+<meta name="twitter:description" content="这周六（2019-4-20）我去参加了安卓巴士举办的开发者大会，会议上Gityuan分享了Android技术架构演进与未来。 文末我会附上这次"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">NewHandler</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">NewHandler</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Android系统演进</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-21 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#系统演进">系统演进</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p>这周六（2019-4-20）我去参加了安卓巴士举办的<a href="http://web.mob.com/site/h5/h5420/#/schedule">开发者大会</a>，会议上Gityuan分享了<a href="http://gityuan.com/2019/03/20/android_future/">Android技术架构演进与未来</a>。</p>
+
+<p>文末我会附上这次开发者大会的所有ppt。如有侵权，请告知，我会立即删除。</p>
+
+<p>本篇文章回顾下Android系统演进部分。</p>
+
+<h2 id="系统演进">系统演进</h2>
+
+<p>以时间线的方式回顾下Android的重要节点。</p>
+
+<p><img src="https://github.com/fengdexunmi/we-love-android/raw/master/2019/share/img/android_os_evolution.jpg" alt="android-evolution" />
+(<smal>图片来自于<a href="http://gityuan.com/images/android-future/android_os_evolution.jpg">Gityuan</a>，如有侵权请告知，立马删除</smal>)</p>
+
+<p>当然我们知道，2003年10月Andy Rubin创办了Android公司，2005年8月谷歌收购了Android公司，真正开始了Android的重要进程。</p>
+
+<p>随着每个Android大版本的更新迭代，Android在用户体验、流畅性、续航、安全、隐私、机器学习等方面都取得了很大的进步。现在可以讲Android系统本身已经完全不虚iOS系统，但是应用质量还弱于iOS，这和iOS生态管理也息息相关。</p>
+
+<ul>
+<li>Android1.0到Android4.0应该是Android完善系统功能和特性的过程。</li>
+<li>Android4.1系统，很多人对Android的印象是Android手机非常卡，特别是用久了之后，为了让Android在流畅性有大的改进，Google开展了<strong>黄油计划（Project Butter）</strong>，希望Android系统能像黄油一样顺滑。核心原理是系统框架渲染层和动画统一采用垂直同步技术（VSYNC）和三重缓冲技术（Triple Buffer），可以参考Gityuan的文章。</li>
+<li>Android4.4，为了降低安卓系统的内存使用，Google开展了<strong>瘦身计划（Project Svelte）</strong>，支持<code>沉浸式</code>模式。</li>
+<li>Android5.0，开展了<strong>伏特计划（Project Volta）</strong>提升续航，采用ART虚拟机取代Dalvik虚拟机，UI方面设计了Material Design语言风格，在用户体验方面有了很大提升，现在来看很多应用的最低版本都是5.0。</li>
+<li>Android6.0，引入了动态权限机制，把权限主动交给了用户管理，使用了Doze模式，进一步提升续航能力。</li>
+<li>Android7.0，采用JIT/AOT混合编译模式。使得Android安装快、执行效率也很快。<code>JIT</code>(Just in time)即时编译，运行时编译，可以对执行次数频繁的dex代码进行编译与优化。使得Dalvik在运行应用的响应时间大大减小。<code>AOT</code>(Ahead of time)，预编译技术，在应用安装时就完成了所有编译工作。牺牲了安装时间，之后在打开应用时不需要再编译，直接使用本地机器码运行，提升了运行速度。Android7.0采用混合编译模式，统称为AOT（All of the time）全时编译，JIT编译器对ART进行代码分析，在应用运行过程优化应用性能，当设备空闲时，ART会根据JIT分析结果，对代码中常用方法进行编译。</li>
+<li>Android8.0，开展<strong>Project Treble</strong>，重构Android架构，将Android系统框架与Vendor层解耦，解决Android碎片化问题。加强对后台服务、广播、位置的控制。</li>
+<li>Android9.0，引入神经网络、机器学习，预测用户使用习惯，进行省电优化。强化Treble计划，改进文件系统，进一步限制私有API，强化隐私和安全。UI方面，采用新的手势导航，支持刘海屏等。</li>
+<li>Android10.0，开展<strong>Project Mainline</strong>，某些模块不允许厂商修改，只能有Google商店更新升级，强化用户隐私、系统安全和兼容性。</li>
+</ul>
+
+<p>Gityuan在分享大会上也提到了，不管Android如何变化，万变不离其宗，Android整体架构没有变化，每一次版本提升，是对系统架构的丰富和加强。</p>
+
+<p><img src="https://raw.githubusercontent.com/fengdexunmi/we-love-android/master/2019/share/img/android-arch.png" alt="android-arch" />
+(<small>图片来自<a href="http://gityuan.com/images/android-future/android-arch.png">Gityuan</a> 如有侵权请告知，立即删除</small>)</p>
+
+<p>安卓巴士大会所有PPT分享(如有侵权请告知，我会立即删除)</p>
+
+<p>链接: <a href="https://pan.baidu.com/s/1gGjt2bJlSFBhvb_bMAdJ-g">https://pan.baidu.com/s/1gGjt2bJlSFBhvb_bMAdJ-g</a><br />
+提取码: tg2v</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">NewHandler</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-04-21</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/android/">Android</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/memory-analysis-command/">
+            <span class="next-text nav-default">Android内存分析命令</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fengdexunmi" class="iconfont icon-github" title="github"></a>
+  <a href="http://www.newhandler.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">NewHandler</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
